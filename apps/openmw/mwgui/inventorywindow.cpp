@@ -541,6 +541,9 @@ namespace MWGui
                  ptr.getTypeName() == typeid(ESM::Ingredient).name())
                 && mDragAndDrop->mDraggedCount > 1)
             {
+                // Item can be provided from other window for example container.
+                // But after DragAndDrop::startDrag item automaticly always gets to player inventory.
+                mSelectedItem = getModel()->getIndex(mDragAndDrop->mItem);
                 dragItem(nullptr, mDragAndDrop->mDraggedCount - 1);
             }
         }
